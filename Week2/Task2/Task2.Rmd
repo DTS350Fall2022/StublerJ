@@ -1,0 +1,64 @@
+---
+title: "Task 2"
+author: "Jacob Stubler"
+date: "2022-09-01"
+output: html_document
+---
+
+library(knitr)
+
+#1
+sin(pi/4)
+
+#2
+10/3 -> x
+
+#3
+seq(3, 9, length.out = 7) -> MySequence
+
+#4
+my_vector <- c(1, 5, 12, 31, 19)
+
+#5
+7+5==12
+
+The output of this is TRUE, but "==" means "is equal to"
+
+#6
+(7+4=12)|(5-4=1)
+
+an error message results from this, because it is assigning values to numbers.
+We would need to assign the result of calculations to something that isn't a number.
+
+#exercise 1
+my_variable <- 10
+my_varıable
+#> Error in eval(expr, envir, enclos): object 'my_varıable' not found
+'my_varıable' would not have been found because it has been carefully misspelled.
+
+#exercise 2 given code
+library(tidyverse)
+
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+fliter(mpg, cyl = 8)
+filter(diamond, carat > 3)
+
+#exercise 2 revised code
+library(tidyverse)
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+filter(mpg, cyl == 8)
+filter(diamonds, carat > 3)
+
+
+The code errors on this question were similar to the first problem, because there were minor 
+spelling / syntax errors that caused the code to not be able to run. This is evident by the 
+fact that the revised and "working" code looks eerily similar to the original, or given code.
+
+#exercise 3
+When you press ALT + SHIFT + K, you are given a list of about 100 keyboard shortcuts
+
