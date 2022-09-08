@@ -1,0 +1,30 @@
+library(tidyverse)
+library(ggplot2)
+
+urlfile="https://github.com/WJC-Data-Science/DTS350/raw/master/coral.csv"
+mydata <- read_csv(url(urlfile))
+
+head(mydata);
+tail(mydata);
+str(mydata);
+
+?mydata
+
+ggplot(mydata, aes(fill= Event, y=Value, x=Year)) +
+  geom_bar(position="stack", stat="identity") +
+  facet_wrap(~ Entity, ncol= 2, scales = 'free')
+
+I would argue that the data does absolutely seem to indicate that bleaching 
+events are occuring more frequently. For one, outside of the West Atlantic 
+visualization, each plot seems visually to clearly be skewed left. In some
+cases this is more exaggerated than in others, but this is certainly an indication
+of a gradual increase. 
+
+ggplot(data = mydata, aes (x = Year, y = Value, color = Entity)) +
+  geom_point() + geom_smooth()
+  
+I chose this layered scatter plot as my secondary visualization because I felt
+as though it made comparing each location even easier. I used different
+colors as well as incorporated trendlines associated with the five different 
+locations in order to increase my ability to compare the nuances over time a 
+little more closely. 
