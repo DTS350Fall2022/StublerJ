@@ -1,0 +1,41 @@
+library(tidyverse)
+?iris
+
+str(iris)
+head(iris)
+tail(iris)
+
+
+#1
+ggplot(data = iris) +
+  geom_point(mapping = aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species))
+
+#2
+ggplot(data = iris) +
+  geom_point(mapping = aes(x = Petal.Width, y = Petal.Length, color = Species, shape = Species)) +
+  facet_wrap(~Species)
+  
+#3
+ggplot(data = iris) +
+  geom_point(mapping = aes(x = Petal.Length, y = Petal.Width, color = Species, shape = Species))+
+  geom_smooth(method = lm, mapping = aes(x = Petal.Length, y = Petal.Width))
+
+#4
+ggplot(data = iris) +
+  geom_histogram(mapping = aes(x = Sepal.Length, fill = Species), binwidth = 0.2, color = 'black')
+  
+#Driving Question(s)
+How does the species affect the width and length of the sepal? How much variation lies between 
+a single species? Is the width or length more likely to differentiate further from average? 
+Is there any overlap between species? Is there more likely to be overlap for width or length across 
+species or is there no difference?
+
+#Visualizations helped because...
+Each visualization does two things very well. Firstly, they each make it extremely easy to 
+differentiate between species. In many cases, color is used to differentiate, and in one case
+a scatter plot is facet wrapped by the species so everything is organized neatly. Secondly, 
+these visualizations make it very easy to compare information from one species to the next. 
+In most cases, they are all operating off the same X and Y axis so any and all overlap is 
+obvious. In summary, these visualizations make it easy to analyze each species in isolation, 
+but are also useful to compare against the other two and I don't feel like we have to sacrifice
+one to get the other at all.
