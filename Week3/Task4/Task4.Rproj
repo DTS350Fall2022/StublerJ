@@ -1,0 +1,74 @@
+---
+title: "Task4"
+author: "Jacob Stubler"
+date: "2022-09-13"
+output: html_document
+keep md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+library(tidyverse)
+library(knitr)
+view(iris_data)
+
+#1
+iris_data <- as_tibble(iris)
+iris_data
+
+#2
+s_table <- arrange(iris, Sepal.Length)
+head(s_table,10)
+
+#3
+testdat <- select(iris_data,Species,Petal.Width)
+testdat
+
+#4
+species_mean <- iris_data %>%
+  group_by(Species) %>%
+  summarise(mean(Sepal.Length), mean(Sepal.Width), mean(Petal.Length), mean(Petal.Width)) 
+species_mean
+
+#5
+iris_1 <- select(iris_data, Species, Sepal.Width, Petal.Width,) 
+iris_min <-filter(iris_1, Sepal.Width >= 3, Petal.Width != 2.5)
+iris_min
+
+#6
+iris_size <- iris_data %>%
+  mutate(Sepal.Size =
+    case_when(
+      Sepal.Length < 5 ~ "small",
+      Sepal.Length >= 5 & Sepal.Length < 6.5 ~ "medium",
+      Sepal.Length >= 6.5 ~ "large"))
+iris_size
+
+#7
+iris_rank <- arrange(iris_data, desc(Petal.Length))
+mutate(iris_rank, rank=min_rank(Petal.Length))
+head(iris_rank)
+
+#8
+?summarise_all
+mean_std <- iris_data %>%
+  group_by(Species) %>%
+  summarize_all(list(Mean=mean, Std_dev = sd))
+mean_std
+
+#novel questions that data can answer
+#what percent greater, on average, are one weight class world records higher than the one below in powerlifting?
+#what is the median yearly revenue for businesses with < 10 employees, < 50 employees, < 100 employees, < 500 employees, < 5000 employees, and > 5000 employees? where does the highest jump in revenue occur?
+#what is the percentage of people that fill up on gasoline per day? What percent of those people choose to fill up at quick trip?
+#what movie on netflix has the most views to date?
+#how many Americans travelled interationally last year?
+#what percentage of Americans own a dog?
+
+#I spoke with my friends, and they agreed that sometimes the most basic questions can be the most interesting, but also liked the more in-depth questions so they enjoyed the spread.
+
+#I kept finding examples of visualizations on statista.com. Unfortunately since I don't have a premium account, they didn't let me see all of the references in detail but this site seems like it might be a good reference in the future. 
+
+#I presented these questions to my dad that is an engineer, and he said data is key to his job as a (I'll just call him an "ammunition engineer" for simplicity sake). He conducts repeated trials on a certain rounds and quantifies how often they malfunction and attempts to understand why each round malfunctions. This process is especially necessary for new technologies or any change in the production process.
+
